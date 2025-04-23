@@ -40,14 +40,14 @@
       </table>
     </div>
 
-    <!-- Task Modal -->
-    <TaskModal v-if="showModal" @close="showModal = false" @task-created="fetchTasks" />
+    <div v-if="feedbackMessage" class="feedback-message">{{ feedbackMessage }}</div>
+    <TaskModal v-if="showModal" @close="showModal = false" @task-created="handleTaskCreated" />
   </div>
 </template>
 
 <script>
-import { fetchTasks, deleteTask } from '@/api/tasks';
 import TaskModal from '@/components/TaskModal.vue';
+import { fetchTasks, deleteTask } from '@/api/tasks';
 
 export default {
   components: {
@@ -58,6 +58,7 @@ export default {
       tasks: [],
       filter: '',
       showModal: false,
+      feedbackMessage: '', // Mensaje de retroalimentación
     };
   },
   methods: {
@@ -81,6 +82,16 @@ export default {
     },
     formatDate(date) {
       return new Date(date).toLocaleDateString();
+    },
+    handleTaskCreated(message) {
+      this.fetchTasks();
+      this.showFeedback(message);
+    },
+    showFeedback(message) {
+      this.feedbackMessage = message;
+      setTimeout(() => {
+        this.feedbackMessage = ''; // Oculta el mensaje después de 3 segundos
+      }, 3000);
     },
   },
   mounted() {
@@ -201,6 +212,16 @@ export default {
   font-weight: bold;
 }
 
+.feedback-message {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .actions {
     flex-direction: column;
@@ -219,18 +240,18 @@ export default {
 @media (min-width: 1024px) {
   .task-table th,
   .task-table td {
-    padding: 1rem 1.5rem; /* Increase padding for better spacing */
-    font-size: 1.1rem; /* Slightly larger font size */
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
   }
 
   .create-task-button {
-    font-size: 1.2rem; /* Larger button text */
-    padding: 1rem 1.5rem; /* Larger button size */
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
   }
 
   .status-filter {
-    font-size: 1.1rem; /* Larger font size for the dropdown */
-    padding: 0.8rem; /* Increase padding for better usability */
+    font-size: 1.1rem;
+    padding: 0.8rem;
   }
 }
 </style>

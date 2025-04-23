@@ -47,7 +47,7 @@ export default {
     async createTask() {
       try {
         await createTask(this.task);
-        this.$emit('task-created');
+        this.$emit('task-created', 'Task created successfully!');
         this.$emit('close');
         this.errors = {}; // Clear errors on success
         this.errorMessage = '';
