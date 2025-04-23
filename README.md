@@ -1,35 +1,36 @@
-# front_prueba
+# Task Management App
 
-This template should help get you started developing with Vue 3 in Vite.
+## Descripción
+Esta es una aplicación de gestión de tareas construida con Vue.js. Permite a los usuarios registrarse, iniciar sesión, crear, editar y eliminar tareas.
 
-## Recommended IDE Setup
+## Requisitos previos
+Asegúrate de tener instalados los siguientes programas en tu sistema:
+- [Node.js](https://nodejs.org/) (versión 14 o superior)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Instalación
+Sigue estos pasos para configurar el proyecto en tu máquina local:
 
-## Customize configuration
+1. **Clona el repositorio:**
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd front_prueba
+   ```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+2. **Instala las dependencias:**
+   Si usas `npm`:
+   ```bash
+   npm install
+   ```
 
-## Project Setup
+## Uso
+1. **Inicia el servidor de desarrollo:**
+   Si usas `npm`:
+   ```bash
+   npm run dev
+   ```
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
+2. **Abre la aplicación en tu navegador:**
+   Ve a la URL que aparece en la consola, generalmente es:
+   ```
+   http://localhost:5174
+   ```
